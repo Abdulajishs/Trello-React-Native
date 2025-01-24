@@ -1,0 +1,38 @@
+project-root/
+├── App.js                # Main entry point of the application
+├── global.css            # Tailwind CSS styles
+├── tailwind.config.js    # Tailwind configuration
+├── metro.config.js       # Metro bundler configuration
+├── package.json          # Project dependencies
+├── assets/               # Static assets like images, fonts, etc.
+│   ├── images/
+│   ├── fonts/
+│   └── icons/
+├── components/           # Reusable components
+│   ├── ui/               # UI-specific components
+│   │   ├── Box.js
+│   │   ├── Text.js
+│   │   └── GluestackUIProvider.js
+│   └── common/           # Other common components
+│       ├── Header.js
+│       └── Footer.js
+├── screens/              # Screens for navigation
+│   ├── HomeScreen.js
+│   ├── ProfileScreen.js
+│   └── settings/         # Group screens by feature/module
+│       ├── AccountScreen.js
+│       └── PreferencesScreen.js
+├── navigation/           # Navigation logic
+│   ├── AppNavigator.js
+│   └── AuthNavigator.js
+├── utils/                # Helper functions and utilities
+│   ├── api.js
+│   ├── constants.js
+│   └── formatters.js
+├── hooks/                # Custom hooks
+│   ├── useAuth.js
+│   ├── useTheme.js
+│   └── useFetch.js
+└── context/              # React Context files
+    ├── AuthContext.js
+    └── ThemeContext.js
