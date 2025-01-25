@@ -27,15 +27,13 @@ const CreateBoardScreen = ({ navigation }) => {
     const dispatch = useDispatch()
 
     const boardOptions = [
-        { label: "Blue", value: "blue", bgColor: "bg-blue-500" },
-        { label: "Orange", value: "orange", bgColor: "bg-orange-500" },
-        { label: "Green", value: "green", bgColor: "bg-green-500" },
-        { label: "Red", value: "red", bgColor: "bg-red-500" },
-        { label: "Purple", value: "purple", bgColor: "bg-purple-500" },
-        { label: "Pink", value: "pink", bgColor: "bg-pink-500" },
-        { label: "Lime", value: "lime", bgColor: "bg-lime-500" },
-        { label: "Sky", value: "sky", bgColor: "bg-sky-500" },
-        { label: "Grey", value: "grey", bgColor: "bg-gray-500" },
+        { label: "Blue", value: "blue", bgColor: "bg-blue-800" },
+        { label: "Orange", value: "orange", bgColor: "bg-orange-800" },
+        { label: "Green", value: "green", bgColor: "bg-green-800" },
+        { label: "Red", value: "red", bgColor: "bg-red-800" },
+        { label: "Purple", value: "purple", bgColor: "bg-purple-700" },
+        { label: "Pink", value: "pink", bgColor: "bg-pink-700" },
+        { label: "Grey", value: "grey", bgColor: "bg-gray-700" },
     ];
 
     useEffect(() => {
@@ -45,13 +43,13 @@ const CreateBoardScreen = ({ navigation }) => {
     const handleCreateBoard = () => {
         console.log("Board Created:", { boardName, selectedColor });
         dispatch(creatingBoard(boardName, { prefs_background: selectedColor }))
-        navigation.navigate('ListScreen')
+        navigation.goBack()
     };
 
     return (
         <VStack space="md" className="flex-1 w-full p-12">
 
-            <Input className="my-1 border-0 border-b-2 border-b-blue-700">
+            <Input className="my-1 border-0 border-b-2 border-b-blue-900">
                 <InputField
                     type="text"
                     placeholder="Board name"
@@ -69,7 +67,7 @@ const CreateBoardScreen = ({ navigation }) => {
                     <SelectTrigger variant="underlined" size="md" className="flex flex-row justify-between ">
                         <SelectInput
                             placeholder="Board Background"
-                            className="pt-0 "
+                            className="pt-0 px-3 "
                         />
                         <SelectIcon className="mr-3" as={ChevronDownIcon} />
                     </SelectTrigger>
@@ -97,16 +95,16 @@ const CreateBoardScreen = ({ navigation }) => {
                 ></Box>
             </Box>
 
-
-            <Button
-                className={`${isDisabled ? "bg-gray-400" : "bg-blue-700"
-                    } absolute bottom-4 w-full mx-16`}
-                size="lg"
-                onPress={handleCreateBoard}
-                disabled={isDisabled}
-            >
-                <ButtonText>Create board</ButtonText>
-            </Button>
+            <Box className="flex-1 justify-end w-full">
+                <Button
+                    className={`${isDisabled ? "bg-gray-400" : "bg-blue-700"}`}
+                    size="lg"
+                    onPress={handleCreateBoard}
+                    disabled={isDisabled}
+                >
+                    <ButtonText>Create board</ButtonText>
+                </Button>
+            </Box>
         </VStack>
     );
 };

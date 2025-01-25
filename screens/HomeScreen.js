@@ -40,7 +40,7 @@ const HomeScreen = ({ navigation }) => {
     const handleListsPress = (item) => {
         dispatch(fetchLists(item.id))
         dispatch(fetchCards(item.id))
-        navigation.navigate('ListScreen', { boardName: item.name, headerColor: item.prefs.background, bodyColor: item.prefs.backgroundColor })
+        navigation.navigate('ListScreen', { boardName: item.name, headerColor: item.prefs.background, bodyColor: item.prefs.backgroundColor, boardId: item.id })
     }
 
     return (

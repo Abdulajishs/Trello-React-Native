@@ -15,6 +15,9 @@ const listSlice = createSlice({
         createList: (state, action) => {
             state.lists.push(action.payload)
         },
+        updateList: (state, action) => {
+            state.lists = state.lists.map((list) => list.id === action.payload.id ? action.payload : list)
+        },
         deleteList: (state, action) => {
             state.lists = state.lists.filter((list) => list.id != action.payload)
         }
@@ -24,6 +27,7 @@ const listSlice = createSlice({
 export const {
     setLists,
     createList,
+    updateList,
     deleteList
 } = listSlice.actions;
 

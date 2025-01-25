@@ -34,17 +34,17 @@ const AppNavigator = () => {
                 component={HomeScreen}
                 options={{
                     title: 'Boards',
-                    headerRight: () => (
-                        <View style={{ paddingHorizontal: 10 }}>
-                            <Pressable
-                                onPress={() => console.log('Search icon pressed!')}
-                            >
-                                <Box className="h-20 w-20 bg-red-700">
-                                    <Icon as={SearchIcon} size='xl' color="white" style={{ transform: [{ rotate: '90deg' }] }} />
-                                </Box>
-                            </Pressable>
-                        </View>
-                    )
+                    // headerRight: () => (
+                    //     <View style={{ paddingHorizontal: 10 }}>
+                    //         <Pressable
+                    //             onPress={() => console.log('Search icon pressed!')}
+                    //         >
+                    //             <Box className="h-20 w-20 bg-red-700">
+                    //                 <Icon as={SearchIcon} size='xl' color="white" style={{ transform: [{ rotate: '90deg' }] }} />
+                    //             </Box>
+                    //         </Pressable>
+                    //     </View>
+                    // )
                 }}
             />
             <Stack.Screen
