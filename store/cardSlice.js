@@ -5,7 +5,7 @@ const initialState = {
 }
 
 const cardSlice = createSlice({
-    name: 'list',
+    name: 'card',
     initialState,
     reducers: {
         setCards: (state, action) => {

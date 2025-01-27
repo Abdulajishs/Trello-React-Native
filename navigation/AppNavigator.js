@@ -10,6 +10,7 @@ import CreateBoardScreen from "@/screens/CreateBoardScreen";
 import { useNavigation } from "@react-navigation/native";
 import { Box } from "@/components/ui/box";
 import ListScreen from "@/screens/ListScreen";
+import CardScreen from "@/screens/CardScreen";
 
 const AppNavigator = () => {
     const dispatch = useDispatch();
@@ -57,6 +58,10 @@ const AppNavigator = () => {
             <Stack.Screen
                 name='ListScreen'
                 component={ListScreen}
+            />
+            <Stack.Screen
+                name='CardScreen'
+                component={CardScreen}
             />
         </Stack.Navigator>
     )

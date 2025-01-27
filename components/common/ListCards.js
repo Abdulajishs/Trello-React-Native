@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import {
     AlertDialog,
     AlertDialogContent,
-    AlertDialogHeader,
     AlertDialogFooter,
     AlertDialogBody,
     AlertDialogBackdrop,
@@ -18,11 +17,14 @@ import { View } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { creatingCard, DeletingCard } from '@/store/cardAction'
 import { Box } from '../ui/box'
+import { fetchCheckList } from '@/store/checkListAction'
+import { useNavigation } from '@react-navigation/native'
 
 const ListCards = ({ card }) => {
     const [addCard, setAddCard] = useState(false);
     const [cardName, setCardName] = useState('');
     const [showAlertDialog, setShowAlertDialog] = useState(false)
+    const navigation = useNavigation()
 
     const handleClose = () => setShowAlertDialog(false)
 
@@ -44,14 +46,25 @@ const ListCards = ({ card }) => {
         setShowAlertDialog(false)
     }
 
+    const handleCardPress = (id) => {
+        // console.log(id)
+        dispatch(fetchCheckList(id))
+        navigation.navigate('CardScreen', { cardId: id })
+    }
+
     return (
-        <Pressable onLongPress={() => setShowAlertDialog(true)}>
+        <>
             {!isDefaultCard ? (
-                <Card size="sm" variant="filled" className="m-3">
-                    <Text size="md" className="mb-1">{card.name}</Text>
-                </Card>
+                <Pressable onPress={() => handleCardPress(card.id)}
+                    onLongPress={() => {
+                        setShowAlertDialog(true)
+                    }}
+                >
+                    <Card size="sm" variant="filled" className="m-3">
+                        <Text size="md" className="mb-1">{card.name}</Text>
+                    </Card>
+                </Pressable>
             ) : (
-                // <Heading size="md" className="mx-3 mb-1.5 text-blue-700">{card.name}</Heading>
                 <Pressable onPress={() => setAddCard(true)}>
                     {!addCard ?
                         <Heading size="md" className="mx-3 mb-1.5 text-blue-700">{card.name}</Heading>
@@ -69,14 +82,14 @@ const ListCards = ({ card }) => {
                                         onChangeText={(text) => setCardName(text)}
                                     />
                                 </Input>
-                                {/* {console.log(card)} */}
                                 <Button className='p-0 bg-transparent' action="positive" onPress={() => handleOKPress(card.idList, { name: cardName })}>
                                     <Icon as={CheckIcon} size="md" className='w-1/4 text-blue-500' />
                                 </Button>
                             </View>
                         )}
                 </Pressable>
-            )}
+            )
+            }
 
             <AlertDialog isOpen={showAlertDialog} onClose={handleClose} >
                 <AlertDialogBackdrop />
@@ -105,7 +118,7 @@ const ListCards = ({ card }) => {
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
-        </Pressable>
+        </>
     )
 }
 

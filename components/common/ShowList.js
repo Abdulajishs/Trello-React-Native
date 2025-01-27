@@ -56,7 +56,7 @@ const ShowList = ({ list }) => {
         <Pressable onLongPress={() => setShowAlertDialog(true)}>
 
             <Box
-                className={`bg-slate-200 rounded-lg p-2 mx-4 w-80 ${isDefaultList ? 'justify-center items-center' : ''}`}>
+                className={`bg-slate-200 rounded-lg p-2 gap-6 mx-4 w-80 ${isDefaultList ? 'justify-center items-center' : ''}`}>
 
                 <Pressable onPress={() => setEditList(true)}>
                     {/* {console.log(editList)} */}
